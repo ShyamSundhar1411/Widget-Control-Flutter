@@ -1,8 +1,7 @@
 import 'dart:math';
 
 import "package:flutter/material.dart";
-import "./text.dart";
-import "./textController.dart";
+import "./wrapper.dart";
 
 void main() {
   runApp(MyMainWidget());
@@ -37,11 +36,7 @@ class _MyMainWidgetState extends State<MyMainWidget> {
     return MaterialApp(
         home: Scaffold(
             appBar: AppBar(title: Text("Widget Control Assignment-1")),
-            body: Column(children: [
-              textDisplay(_texts[_textIndex]),
-              Change(_randomiseText),
-            ]
-          )
+            body: Wrapper(_randomiseText,_texts,_textIndex),
         )
       );
   }
