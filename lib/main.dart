@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import "package:flutter/material.dart";
+import "./text.dart";
+import "./textController.dart";
 
 void main() {
   runApp(MyMainWidget());
@@ -24,16 +26,23 @@ class _MyMainWidgetState extends State<MyMainWidget> {
   var _textIndex = 0;
 
   void _randomiseText() {
-    var random = new Random();
-    _textIndex = random.nextInt(_texts.length);
+    setState(() {
+      var random = new Random();
+      _textIndex = random.nextInt(_texts.length);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-      appBar: AppBar(title: Text("Widget Control Assignment-1")),
-      body: Text("Default"),
-    ));
+            appBar: AppBar(title: Text("Widget Control Assignment-1")),
+            body: Column(children: [
+              textDisplay(_texts[_textIndex]),
+              Change(_randomiseText),
+            ]
+          )
+        )
+      );
   }
 }
